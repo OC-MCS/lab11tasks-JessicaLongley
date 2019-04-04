@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    NumberList list;
+    //NumberList list;
     //task 1
     //list.insertNode(10);
     //list.appendNode(40);
@@ -14,7 +14,7 @@ int main()
     //list.deleteNode(30);
     //list.displayList();
 
-    //task 2
+    //task 3
     //fstream file;
     //file.open("Numbers.txt");
     //int temp;
@@ -32,6 +32,7 @@ int main()
     //}
     //list.displayList();
 
+    //task 4
     NumberList listA, listB;
     listA.appendNode(10);
     listA.appendNode(20);

@@ -61,6 +61,33 @@ void NumberList::displayList() const
 	}
 }
 
+NumberList NumberList::operator=(const NumberList & right)
+{
+    ListNode *nodePtr; //to move through the list
+    ListNode *nextNode;
+    nodePtr = head; //Position nodePtr at the head of list A.
+
+    //While nodePtr points to a node, traverse the list
+    //delete the contents of list A
+    while (nodePtr) //while nodePtr points to a value
+    {
+        nextNode = nodePtr->next; //save the number place after the node we are working with
+        deleteNode(nodePtr->value); //delete the node we are working with
+        nodePtr = nextNode; //the node we are working with is now the one we were saving
+    }
+    head = nullptr; //set list A head to nullptr 
+    nodePtr = right.head; //Position nodePtr at the head of list B
+
+    //append list B to list A one by one
+    while (nodePtr) //while nodePtr points to a value
+    {
+        appendNode(nodePtr->value); //append the value from list B to list A
+        nodePtr = nodePtr->next; //move on to the next value in list B
+    }
+
+    return *this;
+}
+
 //**************************************************
 // The insertNode function inserts a node with     *
 // num copied to its value member.                 *
@@ -169,8 +196,7 @@ NumberList::~NumberList()
 	ListNode *nodePtr;   // To traverse the list
 	ListNode *nextNode;  // To point to the next node
 
-						 // Position nodePtr at the head of the list.
-	nodePtr = head;
+	nodePtr = head;	 // Position nodePtr at the head of the list.
 
 	// While nodePtr is not at the end of the list...
 	while (nodePtr != nullptr)
